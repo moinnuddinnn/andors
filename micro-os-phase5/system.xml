@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+    <!-- Only the UART driver maps PL011; IRQ 33. -->
+    <memory_region name="uart_mmio" size="0x1000" phys_addr="0x09000000" />
+    <memory_region name="rx_ring" size="0x1000" />
+    <memory_region name="tx_ring" size="0x1000" />
+
+    <!-- Terminal<->filesystem and filesystem<->block-driver mailboxes. -->
+    <memory_region name="fs_mailbox" size="0x1000" />
+    <memory_region name="block_mailbox" size="0x1000" />
+
+    <!-- Terminal <-> app manager; app manager <-> each individual app. -->
+    <memory_region name="app_mailbox" size="0x1000" />
+    <memory_region name="calc_mailbox" size="0x1000" />
+    <memory_region name="counter_mailbox" size="0x1000" />
+
+    <!-- Older QEMU virt creates 32 MMIO transports. Its first automatically
+         attached virtio-blk-device uses slot 31 at 0x0a003e00 (INTID 79).
+         Map the enclosing aligned 4 KiB page; the driver adds 0xe00. -->
+    <memory_region name="virtio_mmio" size="0x1000" phys_addr="0x0a003000" />
+
+    <!-- Microkit chooses a contiguous physical address for this DMA region
+         because the block driver has a setvar region_paddr reference. -->
+    <memory_region name="blk_dma" size="0x5000" page_size="0x1000" />
+
+    <protection_domain name="uart_driver" priority="200">
+        <program_image path="uart_driver.elf" />
+        <map mr="uart_mmio" vaddr="0x04000000" perms="rw" cached="false"
+             setvar_vaddr="uart_base_vaddr" />
+        <map mr="rx_ring" vaddr="0x04010000" perms="rw"
+             setvar_vaddr="rx_ring_vaddr" />
+        <map mr="tx_ring" vaddr="0x04020000" perms="rw"
+             setvar_vaddr="tx_ring_vaddr" />
+        <irq irq="33" id="1" />
+    </protection_domain>
+
+    <protection_domain name="block_driver" priority="175">
+        <program_image path="virtio_blk.elf" />
+        <map mr="virtio_mmio" vaddr="0x04000000" perms="rw" cached="false"
+             setvar_vaddr="virtio_mmio_vaddr" />
+        <map mr="block_mailbox" vaddr="0x04010000" perms="rw"
+             setvar_vaddr="block_mailbox_vaddr" />
+        <!-- QEMU virt declares DMA coherent; this shared RAM is cached. -->
+        <map mr="blk_dma" vaddr="0x05000000" perms="rw"
+             setvar_vaddr="blk_dma_vaddr" />
+        <setvar symbol="blk_dma_paddr" region_paddr="blk_dma" />
+        <irq irq="79" id="1" />
+    </protection_domain>
+
+    <protection_domain name="filesystem" priority="150">
+        <program_image path="filesystem.elf" />
+        <map mr="fs_mailbox" vaddr="0x04030000" perms="rw"
+             setvar_vaddr="fs_mailbox_vaddr" />
+        <map mr="block_mailbox" vaddr="0x04040000" perms="rw"
+             setvar_vaddr="block_mailbox_vaddr" />
+    </protection_domain>
+
+    <protection_domain name="terminal" priority="100">
+        <program_image path="terminal.elf" />
+        <map mr="rx_ring" vaddr="0x04010000" perms="rw"
+             setvar_vaddr="rx_ring_vaddr" />
+        <map mr="tx_ring" vaddr="0x04020000" perms="rw"
+             setvar_vaddr="tx_ring_vaddr" />
+        <map mr="fs_mailbox" vaddr="0x04030000" perms="rw"
+             setvar_vaddr="fs_mailbox_vaddr" />
+        <map mr="app_mailbox" vaddr="0x04050000" perms="rw"
+             setvar_vaddr="app_mailbox_vaddr" />
+    </protection_domain>
+
+    <protection_domain name="app_manager" priority="130">
+        <program_image path="app_manager.elf" />
+        <map mr="app_mailbox" vaddr="0x04050000" perms="rw"
+             setvar_vaddr="app_mailbox_vaddr" />
+        <map mr="calc_mailbox" vaddr="0x04060000" perms="rw"
+             setvar_vaddr="calc_mailbox_vaddr" />
+        <map mr="counter_mailbox" vaddr="0x04070000" perms="rw"
+             setvar_vaddr="counter_mailbox_vaddr" />
+    </protection_domain>
+
+    <protection_domain name="calculator" priority="120">
+        <program_image path="app_calc.elf" />
+        <map mr="calc_mailbox" vaddr="0x04060000" perms="rw"
+             setvar_vaddr="calc_mailbox_vaddr" />
+    </protection_domain>
+
+    <protection_domain name="counter" priority="120">
+        <program_image path="app_counter.elf" />
+        <map mr="counter_mailbox" vaddr="0x04070000" perms="rw"
+             setvar_vaddr="counter_mailbox_vaddr" />
+    </protection_domain>
+
+    <channel>
+        <end pd="uart_driver" id="0" />
+        <end pd="terminal" id="0" />
+    </channel>
+    <channel>
+        <end pd="filesystem" id="0" />
+        <end pd="terminal" id="1" />
+    </channel>
+    <channel>
+        <end pd="block_driver" id="0" />
+        <end pd="filesystem" id="1" />
+    </channel>
+    <channel>
+        <end pd="terminal" id="2" />
+        <end pd="app_manager" id="0" />
+    </channel>
+    <channel>
+        <end pd="app_manager" id="1" />
+        <end pd="calculator" id="0" />
+    </channel>
+    <channel>
+        <end pd="app_manager" id="2" />
+        <end pd="counter" id="0" />
+    </channel>
+</system>
