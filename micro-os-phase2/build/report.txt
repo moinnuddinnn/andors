@@ -1,0 +1,162 @@
+# Initial Task (CapDL Initialiser) Details
+
+# IRQ Details
+	- IRQ: 'irq_33_uart_driver'
+		* Number: 33
+		* Trigger: level
+		* CPU: 0
+
+
+# TCB Details
+	- TCB: 'tcb_monitor'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 255
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> VSpace: 'pud_monitor'
+			-> IPC Buffer: 'frame_ipcbuf_monitor'
+			-> CSpace: 'cnode_monitor'
+			-> Scheduling Context: 'sched_context_monitor'
+
+	- TCB: 'tcb_terminal'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 100
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_terminal_root'
+			-> VSpace: 'pud_terminal'
+			-> IPC Buffer: 'frame_ipcbuf_terminal'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_terminal'
+			-> Notification: 'ntfn_terminal'
+
+	- TCB: 'tcb_uart_driver'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 200
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_uart_driver_root'
+			-> VSpace: 'pud_uart_driver'
+			-> IPC Buffer: 'frame_ipcbuf_uart_driver'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_uart_driver'
+			-> Notification: 'ntfn_uart_driver'
+
+
+# CNode Details
+	- CNode: 'cnode_monitor'
+		* Slot: 1
+			-> Object: 'ep_fault_monitor'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 2
+			-> Object: 'reply_monitor'
+		* Slot: 10
+			-> Object: 'tcb_terminal'
+		* Slot: 11
+			-> Object: 'tcb_uart_driver'
+
+	- CNode: 'cnode_terminal'
+		* Slot: 1
+			-> Object: 'ntfn_terminal'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_terminal'
+		* Slot: 4
+			-> Object: 'reply_terminal'
+		* Slot: 10
+			-> Object: 'ntfn_uart_driver'
+			-> Rights: Write
+			-> Badge: 0x1
+
+	- CNode: 'cnode_uart_driver'
+		* Slot: 1
+			-> Object: 'ntfn_uart_driver'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_uart_driver'
+		* Slot: 4
+			-> Object: 'reply_uart_driver'
+		* Slot: 10
+			-> Object: 'ntfn_terminal'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 139
+			-> Object: 'irq_33_uart_driver'
+
+	- CNode: 'cnode_terminal_root'
+		* Slot: 0
+			-> Object: 'cnode_terminal'
+
+	- CNode: 'cnode_uart_driver_root'
+		* Slot: 0
+			-> Object: 'cnode_uart_driver'
+
+
+# Architecture Specific Details
+
+# Kernel Objects Details: ID, Type, Name, Physical Address
+	0 - Page(4 KiB): 'frame_mr_uart_mmio_000000000' @ 0x000009000000
+	1 - CNode: 'cnode_monitor' @ 0x000060000000
+	2 - CNode: 'cnode_terminal' @ 0x000060004000
+	3 - CNode: 'cnode_uart_driver' @ 0x000060008000
+	4 - PageTable: 'pud_monitor' @ 0x00006000c000
+	5 - PageTable: 'pud_terminal' @ 0x00006000e000
+	6 - PageTable: 'pud_uart_driver' @ 0x0000602b8000
+	7 - Page(4 KiB): 'frame_elf_monitor_000000000' @ 0x0000602ba000
+	8 - Page(4 KiB): 'frame_elf_monitor_000000001' @ 0x0000602bb000
+	9 - Page(4 KiB): 'frame_elf_monitor_000000002' @ 0x0000602bc000
+	10 - Page(4 KiB): 'frame_elf_monitor_000000003' @ 0x0000602bd000
+	11 - Page(4 KiB): 'frame_elf_monitor_000000004' @ 0x0000602be000
+	12 - Page(4 KiB): 'frame_elf_monitor_000000005' @ 0x0000602bf000
+	13 - Page(4 KiB): 'frame_elf_terminal_000000000' @ 0x0000602c0000
+	14 - Page(4 KiB): 'frame_elf_terminal_000000001' @ 0x0000602c1000
+	15 - Page(4 KiB): 'frame_elf_terminal_000000002' @ 0x0000602c2000
+	16 - Page(4 KiB): 'frame_elf_uart_driver_000000000' @ 0x0000602c3000
+	17 - Page(4 KiB): 'frame_elf_uart_driver_000000001' @ 0x0000602c4000
+	18 - Page(4 KiB): 'frame_ipcbuf_monitor' @ 0x0000602c5000
+	19 - Page(4 KiB): 'frame_ipcbuf_terminal' @ 0x0000602c6000
+	20 - Page(4 KiB): 'frame_ipcbuf_uart_driver' @ 0x0000602c7000
+	21 - Page(4 KiB): 'frame_monitor_stack' @ 0x0000602c8000
+	22 - Page(4 KiB): 'frame_mr_rx_ring_000000000' @ 0x0000602c9000
+	23 - Page(4 KiB): 'frame_mr_tx_ring_000000000' @ 0x0000602ca000
+	24 - Page(4 KiB): 'frame_terminal_stack_000000000' @ 0x0000602cb000
+	25 - Page(4 KiB): 'frame_terminal_stack_000000001' @ 0x0000602cc000
+	26 - Page(4 KiB): 'frame_uart_driver_stack_000000000' @ 0x0000602cd000
+	27 - Page(4 KiB): 'frame_uart_driver_stack_000000001' @ 0x0000602ce000
+	28 - PageTable: 'pd_monitor_vaddr_0x200000' @ 0x0000602cf000
+	29 - PageTable: 'pd_monitor_vaddr_0xffffe00000' @ 0x0000602d0000
+	30 - PageTable: 'pd_terminal_vaddr_0x200000' @ 0x0000602d1000
+	31 - PageTable: 'pd_terminal_vaddr_0xffffe00000' @ 0x0000602d2000
+	32 - PageTable: 'pd_uart_driver_vaddr_0x200000' @ 0x0000602d3000
+	33 - PageTable: 'pd_uart_driver_vaddr_0xffffe00000' @ 0x0000602d4000
+	34 - PageTable: 'pt_monitor_vaddr_0x200000' @ 0x0000602d5000
+	35 - PageTable: 'pt_monitor_vaddr_0xffffffd000' @ 0x0000602d6000
+	36 - PageTable: 'pt_terminal_vaddr_0x200000' @ 0x0000602d7000
+	37 - PageTable: 'pt_terminal_vaddr_0x4010000' @ 0x0000602d8000
+	38 - PageTable: 'pt_terminal_vaddr_0xfffffff000' @ 0x0000602d9000
+	39 - PageTable: 'pt_uart_driver_vaddr_0x200000' @ 0x0000602da000
+	40 - PageTable: 'pt_uart_driver_vaddr_0x4000000' @ 0x0000602db000
+	41 - PageTable: 'pt_uart_driver_vaddr_0xfffffff000' @ 0x0000602dc000
+	42 - TCB: 'tcb_monitor' @ 0x0000602dd000
+	43 - TCB: 'tcb_terminal' @ 0x0000602de000
+	44 - TCB: 'tcb_uart_driver' @ 0x0000602df000
+	45 - CNode: 'cnode_terminal_root' @ 0x0000602e0000
+	46 - CNode: 'cnode_uart_driver_root' @ 0x0000602e0800
+	47 - SchedContext: 'sched_context_monitor' @ 0x0000602e1000
+	48 - SchedContext: 'sched_context_terminal' @ 0x0000602e1100
+	49 - SchedContext: 'sched_context_uart_driver' @ 0x0000602e1200
+	50 - Notification: 'ntfn_terminal' @ 0x0000602e1300
+	51 - Notification: 'ntfn_uart_driver' @ 0x0000602e1340
+	52 - Reply: 'reply_monitor' @ 0x0000602e1380
+	53 - Reply: 'reply_terminal' @ 0x0000602e13a0
+	54 - Reply: 'reply_uart_driver' @ 0x0000602e13c0
+	55 - Endpoint: 'ep_fault_monitor' @ 0x0000602e13e0

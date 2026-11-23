@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+    <!-- QEMU virt PL011 UART: only the driver is allowed to map this. -->
+    <memory_region name="uart_mmio" size="0x1000" phys_addr="0x09000000" />
+
+    <!-- Two independent 4-KiB RAM pages for data in each direction. -->
+    <memory_region name="rx_ring" size="0x1000" />
+    <memory_region name="tx_ring" size="0x1000" />
+
+    <protection_domain name="uart_driver" priority="200">
+        <program_image path="uart_driver.elf" />
+        <map mr="uart_mmio" vaddr="0x04000000" perms="rw" cached="false"
+             setvar_vaddr="uart_base_vaddr" />
+        <map mr="rx_ring" vaddr="0x04010000" perms="rw"
+             setvar_vaddr="rx_ring_vaddr" />
+        <map mr="tx_ring" vaddr="0x04020000" perms="rw"
+             setvar_vaddr="tx_ring_vaddr" />
+        <irq irq="33" id="1" />
+    </protection_domain>
+
+    <protection_domain name="terminal" priority="100">
+        <program_image path="terminal.elf" />
+        <map mr="rx_ring" vaddr="0x04010000" perms="rw"
+             setvar_vaddr="rx_ring_vaddr" />
+        <map mr="tx_ring" vaddr="0x04020000" perms="rw"
+             setvar_vaddr="tx_ring_vaddr" />
+    </protection_domain>
+
+    <!-- Notification IDs are local to each PD (here both happen to be 0). -->
+    <channel>
+        <end pd="uart_driver" id="0" />
+        <end pd="terminal" id="0" />
+    </channel>
+</system>
