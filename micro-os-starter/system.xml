@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+    <protection_domain name="micro_os_init" priority="100">
+        <program_image path="main.elf" />
+    </protection_domain>
+</system>
