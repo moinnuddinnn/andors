@@ -1,0 +1,9 @@
+Compiled C function: x*x + 7
+Actual AArch64 instruction bytes: e80080520020001bc0035fd6
+ELF binary: 160 bytes; base64: 216 characters
+Copy the following command to the Micro-OS prompt (not Ubuntu):
+write /apps/square.elf f0VMRgIBAQAAAAAAAAAAAAMAtwABAAAAgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAOAABAAAAAAAAAAEAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAACgAAAAAAAAABAAAAAAAAAAAAAAAAAAAADoAIBSACAAG8ADX9YAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+Then execute inside Micro-OS:
+elfrun /apps/square.elf 9
+Expected result: 88
+Use sync to persist the file across reboots.

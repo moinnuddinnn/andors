@@ -1,0 +1,11 @@
+Validated Clang native function: 40 bytes, K=7
+ELF64: 184 bytes, Base64: 248 characters
+Paste this single complete command INTO Micro-OS:
+write /apps/log.elf f0VMRgIBAQAAAAAAAAAAAAMAtwABAAAAiAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAOAABAAAAAAAAAAEAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuAAAAAAAAAC4AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP17vqnzCwD5/QMAkfMDACogAD/W6ACAUmAiExvzC0D5/XvCqMADX9YAAAAAAAAAAA==
+Then run:
+elfrun /apps/log.elf 9
+Expected on ARM64:
+[CONSOLE] native app printed: 9
+[ABI] print_u32(9) sent to console service
+native C returned 88 (AArch64 ABI callback)
+Use sync to persist the ELF. Note: no dynamic processes or arbitrary code.
