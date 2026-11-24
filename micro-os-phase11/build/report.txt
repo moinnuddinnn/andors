@@ -1,0 +1,642 @@
+# Initial Task (CapDL Initialiser) Details
+
+# IRQ Details
+	- IRQ: 'irq_33_uart_driver'
+		* Number: 33
+		* Trigger: level
+		* CPU: 0
+
+	- IRQ: 'irq_79_block_driver'
+		* Number: 79
+		* Trigger: level
+		* CPU: 0
+
+
+# TCB Details
+	- TCB: 'tcb_app_manager'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 130
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_app_manager_root'
+			-> VSpace: 'pud_app_manager'
+			-> IPC Buffer: 'frame_ipcbuf_app_manager'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_app_manager'
+			-> Notification: 'ntfn_app_manager'
+
+	- TCB: 'tcb_block_driver'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 175
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_block_driver_root'
+			-> VSpace: 'pud_block_driver'
+			-> IPC Buffer: 'frame_ipcbuf_block_driver'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_block_driver'
+			-> Notification: 'ntfn_block_driver'
+
+	- TCB: 'tcb_calculator'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 120
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_calculator_root'
+			-> VSpace: 'pud_calculator'
+			-> IPC Buffer: 'frame_ipcbuf_calculator'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_calculator'
+			-> Notification: 'ntfn_calculator'
+
+	- TCB: 'tcb_console_service'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 160
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_console_service_root'
+			-> VSpace: 'pud_console_service'
+			-> IPC Buffer: 'frame_ipcbuf_console_service'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_console_service'
+			-> Notification: 'ntfn_console_service'
+
+	- TCB: 'tcb_counter'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 120
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_counter_root'
+			-> VSpace: 'pud_counter'
+			-> IPC Buffer: 'frame_ipcbuf_counter'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_counter'
+			-> Notification: 'ntfn_counter'
+
+	- TCB: 'tcb_filesystem'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 150
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_filesystem_root'
+			-> VSpace: 'pud_filesystem'
+			-> IPC Buffer: 'frame_ipcbuf_filesystem'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_filesystem'
+			-> Notification: 'ntfn_filesystem'
+
+	- TCB: 'tcb_monitor'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 255
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> VSpace: 'pud_monitor'
+			-> IPC Buffer: 'frame_ipcbuf_monitor'
+			-> CSpace: 'cnode_monitor'
+			-> Scheduling Context: 'sched_context_monitor'
+
+	- TCB: 'tcb_native_runner'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 115
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_native_runner_root'
+			-> VSpace: 'pud_native_runner'
+			-> IPC Buffer: 'frame_ipcbuf_native_runner'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_native_runner'
+			-> Notification: 'ntfn_native_runner'
+
+	- TCB: 'tcb_script_vm'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 115
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_script_vm_root'
+			-> VSpace: 'pud_script_vm'
+			-> IPC Buffer: 'frame_ipcbuf_script_vm'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_script_vm'
+			-> Notification: 'ntfn_script_vm'
+
+	- TCB: 'tcb_terminal'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 100
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_terminal_root'
+			-> VSpace: 'pud_terminal'
+			-> IPC Buffer: 'frame_ipcbuf_terminal'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_terminal'
+			-> Notification: 'ntfn_terminal'
+
+	- TCB: 'tcb_uart_driver'
+		* IP: 0x200000
+		* SP: 0xffffffe000
+		* IPC Buffer: 0xfffffff000
+		* Priority: 200
+		* CPU Affinity: 0
+		* Bound Objects:
+			-> CSpace: 'cnode_uart_driver_root'
+			-> VSpace: 'pud_uart_driver'
+			-> IPC Buffer: 'frame_ipcbuf_uart_driver'
+			-> Fault Endpoint: 'ep_fault_monitor'
+			-> Scheduling Context: 'sched_context_uart_driver'
+			-> Notification: 'ntfn_uart_driver'
+
+
+# CNode Details
+	- CNode: 'cnode_app_manager'
+		* Slot: 1
+			-> Object: 'ntfn_app_manager'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_app_manager'
+		* Slot: 4
+			-> Object: 'reply_app_manager'
+		* Slot: 10
+			-> Object: 'ntfn_terminal'
+			-> Rights: Write
+			-> Badge: 0x4
+		* Slot: 11
+			-> Object: 'ntfn_calculator'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 12
+			-> Object: 'ntfn_counter'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 13
+			-> Object: 'ntfn_script_vm'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 14
+			-> Object: 'ntfn_native_runner'
+			-> Rights: Write
+			-> Badge: 0x1
+
+	- CNode: 'cnode_block_driver'
+		* Slot: 1
+			-> Object: 'ntfn_block_driver'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_block_driver'
+		* Slot: 4
+			-> Object: 'reply_block_driver'
+		* Slot: 10
+			-> Object: 'ntfn_filesystem'
+			-> Rights: Write
+			-> Badge: 0x2
+		* Slot: 139
+			-> Object: 'irq_79_block_driver'
+
+	- CNode: 'cnode_calculator'
+		* Slot: 1
+			-> Object: 'ntfn_calculator'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_calculator'
+		* Slot: 4
+			-> Object: 'reply_calculator'
+		* Slot: 10
+			-> Object: 'ntfn_app_manager'
+			-> Rights: Write
+			-> Badge: 0x2
+
+	- CNode: 'cnode_console_service'
+		* Slot: 1
+			-> Object: 'ntfn_console_service'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_console_service'
+		* Slot: 4
+			-> Object: 'reply_console_service'
+		* Slot: 10
+			-> Object: 'ntfn_native_runner'
+			-> Rights: Write
+			-> Badge: 0x2
+
+	- CNode: 'cnode_counter'
+		* Slot: 1
+			-> Object: 'ntfn_counter'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_counter'
+		* Slot: 4
+			-> Object: 'reply_counter'
+		* Slot: 10
+			-> Object: 'ntfn_app_manager'
+			-> Rights: Write
+			-> Badge: 0x4
+
+	- CNode: 'cnode_filesystem'
+		* Slot: 1
+			-> Object: 'ntfn_filesystem'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_filesystem'
+		* Slot: 4
+			-> Object: 'reply_filesystem'
+		* Slot: 10
+			-> Object: 'ntfn_terminal'
+			-> Rights: Write
+			-> Badge: 0x2
+		* Slot: 11
+			-> Object: 'ntfn_block_driver'
+			-> Rights: Write
+			-> Badge: 0x1
+
+	- CNode: 'cnode_monitor'
+		* Slot: 1
+			-> Object: 'ep_fault_monitor'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 2
+			-> Object: 'reply_monitor'
+		* Slot: 10
+			-> Object: 'tcb_app_manager'
+		* Slot: 11
+			-> Object: 'tcb_block_driver'
+		* Slot: 12
+			-> Object: 'tcb_calculator'
+		* Slot: 13
+			-> Object: 'tcb_console_service'
+		* Slot: 14
+			-> Object: 'tcb_counter'
+		* Slot: 15
+			-> Object: 'tcb_filesystem'
+		* Slot: 16
+			-> Object: 'tcb_native_runner'
+		* Slot: 17
+			-> Object: 'tcb_script_vm'
+		* Slot: 18
+			-> Object: 'tcb_terminal'
+		* Slot: 19
+			-> Object: 'tcb_uart_driver'
+
+	- CNode: 'cnode_native_runner'
+		* Slot: 1
+			-> Object: 'ntfn_native_runner'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_native_runner'
+		* Slot: 4
+			-> Object: 'reply_native_runner'
+		* Slot: 10
+			-> Object: 'ntfn_app_manager'
+			-> Rights: Write
+			-> Badge: 0x10
+		* Slot: 11
+			-> Object: 'ntfn_console_service'
+			-> Rights: Write
+			-> Badge: 0x1
+
+	- CNode: 'cnode_script_vm'
+		* Slot: 1
+			-> Object: 'ntfn_script_vm'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_script_vm'
+		* Slot: 4
+			-> Object: 'reply_script_vm'
+		* Slot: 10
+			-> Object: 'ntfn_app_manager'
+			-> Rights: Write
+			-> Badge: 0x8
+
+	- CNode: 'cnode_terminal'
+		* Slot: 1
+			-> Object: 'ntfn_terminal'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_terminal'
+		* Slot: 4
+			-> Object: 'reply_terminal'
+		* Slot: 10
+			-> Object: 'ntfn_uart_driver'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 11
+			-> Object: 'ntfn_filesystem'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 12
+			-> Object: 'ntfn_app_manager'
+			-> Rights: Write
+			-> Badge: 0x1
+
+	- CNode: 'cnode_uart_driver'
+		* Slot: 1
+			-> Object: 'ntfn_uart_driver'
+			-> Rights: Read
+			-> Badge: 0x0
+		* Slot: 3
+			-> Object: 'pud_uart_driver'
+		* Slot: 4
+			-> Object: 'reply_uart_driver'
+		* Slot: 10
+			-> Object: 'ntfn_terminal'
+			-> Rights: Write
+			-> Badge: 0x1
+		* Slot: 139
+			-> Object: 'irq_33_uart_driver'
+
+	- CNode: 'cnode_app_manager_root'
+		* Slot: 0
+			-> Object: 'cnode_app_manager'
+
+	- CNode: 'cnode_block_driver_root'
+		* Slot: 0
+			-> Object: 'cnode_block_driver'
+
+	- CNode: 'cnode_calculator_root'
+		* Slot: 0
+			-> Object: 'cnode_calculator'
+
+	- CNode: 'cnode_console_service_root'
+		* Slot: 0
+			-> Object: 'cnode_console_service'
+
+	- CNode: 'cnode_counter_root'
+		* Slot: 0
+			-> Object: 'cnode_counter'
+
+	- CNode: 'cnode_filesystem_root'
+		* Slot: 0
+			-> Object: 'cnode_filesystem'
+
+	- CNode: 'cnode_native_runner_root'
+		* Slot: 0
+			-> Object: 'cnode_native_runner'
+
+	- CNode: 'cnode_script_vm_root'
+		* Slot: 0
+			-> Object: 'cnode_script_vm'
+
+	- CNode: 'cnode_terminal_root'
+		* Slot: 0
+			-> Object: 'cnode_terminal'
+
+	- CNode: 'cnode_uart_driver_root'
+		* Slot: 0
+			-> Object: 'cnode_uart_driver'
+
+
+# Architecture Specific Details
+
+# Kernel Objects Details: ID, Type, Name, Physical Address
+	0 - Page(4 KiB): 'frame_mr_uart_mmio_000000000' @ 0x000009000000
+	1 - Page(4 KiB): 'frame_mr_virtio_mmio_000000000' @ 0x00000a003000
+	2 - Page(4 KiB): 'frame_mr_blk_dma_000000000' @ 0x000060000000
+	3 - Page(4 KiB): 'frame_mr_blk_dma_000000001' @ 0x000060001000
+	4 - Page(4 KiB): 'frame_mr_blk_dma_000000002' @ 0x000060002000
+	5 - Page(4 KiB): 'frame_mr_blk_dma_000000003' @ 0x000060003000
+	6 - Page(4 KiB): 'frame_mr_blk_dma_000000004' @ 0x000060004000
+	7 - CNode: 'cnode_app_manager' @ 0x000060008000
+	8 - CNode: 'cnode_block_driver' @ 0x00006000c000
+	9 - CNode: 'cnode_calculator' @ 0x0000602e0000
+	10 - CNode: 'cnode_console_service' @ 0x0000602e4000
+	11 - CNode: 'cnode_counter' @ 0x0000602e8000
+	12 - CNode: 'cnode_filesystem' @ 0x0000602ec000
+	13 - CNode: 'cnode_monitor' @ 0x0000602f0000
+	14 - CNode: 'cnode_native_runner' @ 0x0000602f4000
+	15 - CNode: 'cnode_script_vm' @ 0x0000602f8000
+	16 - CNode: 'cnode_terminal' @ 0x0000602fc000
+	17 - CNode: 'cnode_uart_driver' @ 0x000060300000
+	18 - PageTable: 'pud_app_manager' @ 0x000060006000
+	19 - PageTable: 'pud_block_driver' @ 0x0000602de000
+	20 - PageTable: 'pud_calculator' @ 0x000060304000
+	21 - PageTable: 'pud_console_service' @ 0x000060306000
+	22 - PageTable: 'pud_counter' @ 0x000060308000
+	23 - PageTable: 'pud_filesystem' @ 0x00006030a000
+	24 - PageTable: 'pud_monitor' @ 0x00006030c000
+	25 - PageTable: 'pud_native_runner' @ 0x00006030e000
+	26 - PageTable: 'pud_script_vm' @ 0x000060310000
+	27 - PageTable: 'pud_terminal' @ 0x000060312000
+	28 - PageTable: 'pud_uart_driver' @ 0x000060314000
+	29 - Page(4 KiB): 'frame_app_manager_stack_000000000' @ 0x000060005000
+	30 - Page(4 KiB): 'frame_app_manager_stack_000000001' @ 0x000060316000
+	31 - Page(4 KiB): 'frame_block_driver_stack_000000000' @ 0x000060317000
+	32 - Page(4 KiB): 'frame_block_driver_stack_000000001' @ 0x000060318000
+	33 - Page(4 KiB): 'frame_calculator_stack_000000000' @ 0x000060319000
+	34 - Page(4 KiB): 'frame_calculator_stack_000000001' @ 0x00006031a000
+	35 - Page(4 KiB): 'frame_console_service_stack_000000000' @ 0x00006031b000
+	36 - Page(4 KiB): 'frame_console_service_stack_000000001' @ 0x00006031c000
+	37 - Page(4 KiB): 'frame_counter_stack_000000000' @ 0x00006031d000
+	38 - Page(4 KiB): 'frame_counter_stack_000000001' @ 0x00006031e000
+	39 - Page(4 KiB): 'frame_elf_app_manager_000000000' @ 0x00006031f000
+	40 - Page(4 KiB): 'frame_elf_app_manager_000000001' @ 0x000060320000
+	41 - Page(4 KiB): 'frame_elf_app_manager_000000002' @ 0x000060321000
+	42 - Page(4 KiB): 'frame_elf_app_manager_000000003' @ 0x000060322000
+	43 - Page(4 KiB): 'frame_elf_block_driver_000000000' @ 0x000060323000
+	44 - Page(4 KiB): 'frame_elf_block_driver_000000001' @ 0x000060324000
+	45 - Page(4 KiB): 'frame_elf_block_driver_000000002' @ 0x000060325000
+	46 - Page(4 KiB): 'frame_elf_calculator_000000000' @ 0x000060326000
+	47 - Page(4 KiB): 'frame_elf_calculator_000000001' @ 0x000060327000
+	48 - Page(4 KiB): 'frame_elf_calculator_000000002' @ 0x000060328000
+	49 - Page(4 KiB): 'frame_elf_console_service_000000000' @ 0x000060329000
+	50 - Page(4 KiB): 'frame_elf_console_service_000000001' @ 0x00006032a000
+	51 - Page(4 KiB): 'frame_elf_counter_000000000' @ 0x00006032b000
+	52 - Page(4 KiB): 'frame_elf_counter_000000001' @ 0x00006032c000
+	53 - Page(4 KiB): 'frame_elf_counter_000000002' @ 0x00006032d000
+	54 - Page(4 KiB): 'frame_elf_filesystem_000000000' @ 0x00006032e000
+	55 - Page(4 KiB): 'frame_elf_filesystem_000000001' @ 0x00006032f000
+	56 - Page(4 KiB): 'frame_elf_filesystem_000000002' @ 0x000060330000
+	57 - Page(4 KiB): 'frame_elf_filesystem_000000003' @ 0x000060331000
+	58 - Page(4 KiB): 'frame_elf_filesystem_000000004' @ 0x000060332000
+	59 - Page(4 KiB): 'frame_elf_filesystem_000000005' @ 0x000060333000
+	60 - Page(4 KiB): 'frame_elf_filesystem_000000006' @ 0x000060334000
+	61 - Page(4 KiB): 'frame_elf_filesystem_000000007' @ 0x000060335000
+	62 - Page(4 KiB): 'frame_elf_monitor_000000000' @ 0x000060336000
+	63 - Page(4 KiB): 'frame_elf_monitor_000000001' @ 0x000060337000
+	64 - Page(4 KiB): 'frame_elf_monitor_000000002' @ 0x000060338000
+	65 - Page(4 KiB): 'frame_elf_monitor_000000003' @ 0x000060339000
+	66 - Page(4 KiB): 'frame_elf_monitor_000000004' @ 0x00006033a000
+	67 - Page(4 KiB): 'frame_elf_monitor_000000005' @ 0x00006033b000
+	68 - Page(4 KiB): 'frame_elf_native_runner_000000000' @ 0x00006033c000
+	69 - Page(4 KiB): 'frame_elf_native_runner_000000001' @ 0x00006033d000
+	70 - Page(4 KiB): 'frame_elf_native_runner_000000002' @ 0x00006033e000
+	71 - Page(4 KiB): 'frame_elf_script_vm_000000000' @ 0x00006033f000
+	72 - Page(4 KiB): 'frame_elf_script_vm_000000001' @ 0x000060340000
+	73 - Page(4 KiB): 'frame_elf_script_vm_000000002' @ 0x000060341000
+	74 - Page(4 KiB): 'frame_elf_terminal_000000000' @ 0x000060342000
+	75 - Page(4 KiB): 'frame_elf_terminal_000000001' @ 0x000060343000
+	76 - Page(4 KiB): 'frame_elf_terminal_000000002' @ 0x000060344000
+	77 - Page(4 KiB): 'frame_elf_terminal_000000003' @ 0x000060345000
+	78 - Page(4 KiB): 'frame_elf_terminal_000000004' @ 0x000060346000
+	79 - Page(4 KiB): 'frame_elf_terminal_000000005' @ 0x000060347000
+	80 - Page(4 KiB): 'frame_elf_uart_driver_000000000' @ 0x000060348000
+	81 - Page(4 KiB): 'frame_elf_uart_driver_000000001' @ 0x000060349000
+	82 - Page(4 KiB): 'frame_filesystem_stack_000000000' @ 0x00006034a000
+	83 - Page(4 KiB): 'frame_filesystem_stack_000000001' @ 0x00006034b000
+	84 - Page(4 KiB): 'frame_ipcbuf_app_manager' @ 0x00006034c000
+	85 - Page(4 KiB): 'frame_ipcbuf_block_driver' @ 0x00006034d000
+	86 - Page(4 KiB): 'frame_ipcbuf_calculator' @ 0x00006034e000
+	87 - Page(4 KiB): 'frame_ipcbuf_console_service' @ 0x00006034f000
+	88 - Page(4 KiB): 'frame_ipcbuf_counter' @ 0x000060350000
+	89 - Page(4 KiB): 'frame_ipcbuf_filesystem' @ 0x000060351000
+	90 - Page(4 KiB): 'frame_ipcbuf_monitor' @ 0x000060352000
+	91 - Page(4 KiB): 'frame_ipcbuf_native_runner' @ 0x000060353000
+	92 - Page(4 KiB): 'frame_ipcbuf_script_vm' @ 0x000060354000
+	93 - Page(4 KiB): 'frame_ipcbuf_terminal' @ 0x000060355000
+	94 - Page(4 KiB): 'frame_ipcbuf_uart_driver' @ 0x000060356000
+	95 - Page(4 KiB): 'frame_monitor_stack' @ 0x000060357000
+	96 - Page(4 KiB): 'frame_mr_app_mailbox_000000000' @ 0x000060358000
+	97 - Page(4 KiB): 'frame_mr_block_mailbox_000000000' @ 0x000060359000
+	98 - Page(4 KiB): 'frame_mr_calc_mailbox_000000000' @ 0x00006035a000
+	99 - Page(4 KiB): 'frame_mr_console_mailbox_000000000' @ 0x00006035b000
+	100 - Page(4 KiB): 'frame_mr_counter_mailbox_000000000' @ 0x00006035c000
+	101 - Page(4 KiB): 'frame_mr_fs_mailbox_000000000' @ 0x00006035d000
+	102 - Page(4 KiB): 'frame_mr_native_code_000000000' @ 0x00006035e000
+	103 - Page(4 KiB): 'frame_mr_native_data_000000000' @ 0x00006035f000
+	104 - Page(4 KiB): 'frame_mr_native_mailbox_000000000' @ 0x000060360000
+	105 - Page(4 KiB): 'frame_mr_rx_ring_000000000' @ 0x000060361000
+	106 - Page(4 KiB): 'frame_mr_script_mailbox_000000000' @ 0x000060362000
+	107 - Page(4 KiB): 'frame_mr_tx_ring_000000000' @ 0x000060363000
+	108 - Page(4 KiB): 'frame_native_runner_stack_000000000' @ 0x000060364000
+	109 - Page(4 KiB): 'frame_native_runner_stack_000000001' @ 0x000060365000
+	110 - Page(4 KiB): 'frame_script_vm_stack_000000000' @ 0x000060366000
+	111 - Page(4 KiB): 'frame_script_vm_stack_000000001' @ 0x000060367000
+	112 - Page(4 KiB): 'frame_terminal_stack_000000000' @ 0x000060368000
+	113 - Page(4 KiB): 'frame_terminal_stack_000000001' @ 0x000060369000
+	114 - Page(4 KiB): 'frame_uart_driver_stack_000000000' @ 0x00006036a000
+	115 - Page(4 KiB): 'frame_uart_driver_stack_000000001' @ 0x00006036b000
+	116 - PageTable: 'pd_app_manager_vaddr_0x200000' @ 0x00006036c000
+	117 - PageTable: 'pd_app_manager_vaddr_0xffffe00000' @ 0x00006036d000
+	118 - PageTable: 'pd_block_driver_vaddr_0x200000' @ 0x00006036e000
+	119 - PageTable: 'pd_block_driver_vaddr_0xffffe00000' @ 0x00006036f000
+	120 - PageTable: 'pd_calculator_vaddr_0x200000' @ 0x000060370000
+	121 - PageTable: 'pd_calculator_vaddr_0xffffe00000' @ 0x000060371000
+	122 - PageTable: 'pd_console_service_vaddr_0x200000' @ 0x000060372000
+	123 - PageTable: 'pd_console_service_vaddr_0xffffe00000' @ 0x000060373000
+	124 - PageTable: 'pd_counter_vaddr_0x200000' @ 0x000060374000
+	125 - PageTable: 'pd_counter_vaddr_0xffffe00000' @ 0x000060375000
+	126 - PageTable: 'pd_filesystem_vaddr_0x200000' @ 0x000060376000
+	127 - PageTable: 'pd_filesystem_vaddr_0xffffe00000' @ 0x000060377000
+	128 - PageTable: 'pd_monitor_vaddr_0x200000' @ 0x000060378000
+	129 - PageTable: 'pd_monitor_vaddr_0xffffe00000' @ 0x000060379000
+	130 - PageTable: 'pd_native_runner_vaddr_0x200000' @ 0x00006037a000
+	131 - PageTable: 'pd_native_runner_vaddr_0xffffe00000' @ 0x00006037b000
+	132 - PageTable: 'pd_script_vm_vaddr_0x200000' @ 0x00006037c000
+	133 - PageTable: 'pd_script_vm_vaddr_0xffffe00000' @ 0x00006037d000
+	134 - PageTable: 'pd_terminal_vaddr_0x200000' @ 0x00006037e000
+	135 - PageTable: 'pd_terminal_vaddr_0xffffe00000' @ 0x00006037f000
+	136 - PageTable: 'pd_uart_driver_vaddr_0x200000' @ 0x000060380000
+	137 - PageTable: 'pd_uart_driver_vaddr_0xffffe00000' @ 0x000060381000
+	138 - PageTable: 'pt_app_manager_vaddr_0x200000' @ 0x000060382000
+	139 - PageTable: 'pt_app_manager_vaddr_0x4050000' @ 0x000060383000
+	140 - PageTable: 'pt_app_manager_vaddr_0xfffffff000' @ 0x000060384000
+	141 - PageTable: 'pt_block_driver_vaddr_0x200000' @ 0x000060385000
+	142 - PageTable: 'pt_block_driver_vaddr_0x4000000' @ 0x000060386000
+	143 - PageTable: 'pt_block_driver_vaddr_0x5000000' @ 0x000060387000
+	144 - PageTable: 'pt_block_driver_vaddr_0xfffffff000' @ 0x000060388000
+	145 - PageTable: 'pt_calculator_vaddr_0x200000' @ 0x000060389000
+	146 - PageTable: 'pt_calculator_vaddr_0x4060000' @ 0x00006038a000
+	147 - PageTable: 'pt_calculator_vaddr_0xfffffff000' @ 0x00006038b000
+	148 - PageTable: 'pt_console_service_vaddr_0x200000' @ 0x00006038c000
+	149 - PageTable: 'pt_console_service_vaddr_0x40c0000' @ 0x00006038d000
+	150 - PageTable: 'pt_console_service_vaddr_0xfffffff000' @ 0x00006038e000
+	151 - PageTable: 'pt_counter_vaddr_0x200000' @ 0x00006038f000
+	152 - PageTable: 'pt_counter_vaddr_0x4070000' @ 0x000060390000
+	153 - PageTable: 'pt_counter_vaddr_0xfffffff000' @ 0x000060391000
+	154 - PageTable: 'pt_filesystem_vaddr_0x200000' @ 0x000060392000
+	155 - PageTable: 'pt_filesystem_vaddr_0x4030000' @ 0x000060393000
+	156 - PageTable: 'pt_filesystem_vaddr_0xfffffff000' @ 0x000060394000
+	157 - PageTable: 'pt_monitor_vaddr_0x200000' @ 0x000060395000
+	158 - PageTable: 'pt_monitor_vaddr_0xffffffd000' @ 0x000060396000
+	159 - PageTable: 'pt_native_runner_vaddr_0x200000' @ 0x000060397000
+	160 - PageTable: 'pt_native_runner_vaddr_0x40a0000' @ 0x000060398000
+	161 - PageTable: 'pt_native_runner_vaddr_0xfffffff000' @ 0x000060399000
+	162 - PageTable: 'pt_script_vm_vaddr_0x200000' @ 0x00006039a000
+	163 - PageTable: 'pt_script_vm_vaddr_0x4080000' @ 0x00006039b000
+	164 - PageTable: 'pt_script_vm_vaddr_0xfffffff000' @ 0x00006039c000
+	165 - PageTable: 'pt_terminal_vaddr_0x200000' @ 0x00006039d000
+	166 - PageTable: 'pt_terminal_vaddr_0x4010000' @ 0x00006039e000
+	167 - PageTable: 'pt_terminal_vaddr_0xfffffff000' @ 0x00006039f000
+	168 - PageTable: 'pt_uart_driver_vaddr_0x200000' @ 0x0000603a0000
+	169 - PageTable: 'pt_uart_driver_vaddr_0x4000000' @ 0x0000603a1000
+	170 - PageTable: 'pt_uart_driver_vaddr_0xfffffff000' @ 0x0000603a2000
+	171 - TCB: 'tcb_app_manager' @ 0x0000603a3000
+	172 - TCB: 'tcb_block_driver' @ 0x0000603a4000
+	173 - TCB: 'tcb_calculator' @ 0x0000603a5000
+	174 - TCB: 'tcb_console_service' @ 0x0000603a6000
+	175 - TCB: 'tcb_counter' @ 0x0000603a7000
+	176 - TCB: 'tcb_filesystem' @ 0x0000603a8000
+	177 - TCB: 'tcb_monitor' @ 0x0000603a9000
+	178 - TCB: 'tcb_native_runner' @ 0x0000603aa000
+	179 - TCB: 'tcb_script_vm' @ 0x0000603ab000
+	180 - TCB: 'tcb_terminal' @ 0x0000603ac000
+	181 - TCB: 'tcb_uart_driver' @ 0x0000603ad000
+	182 - CNode: 'cnode_app_manager_root' @ 0x0000603ae000
+	183 - CNode: 'cnode_block_driver_root' @ 0x0000603ae800
+	184 - CNode: 'cnode_calculator_root' @ 0x0000603af000
+	185 - CNode: 'cnode_console_service_root' @ 0x0000603af800
+	186 - CNode: 'cnode_counter_root' @ 0x0000603b0000
+	187 - CNode: 'cnode_filesystem_root' @ 0x0000603b0800
+	188 - CNode: 'cnode_native_runner_root' @ 0x0000603b1000
+	189 - CNode: 'cnode_script_vm_root' @ 0x0000603b1800
+	190 - CNode: 'cnode_terminal_root' @ 0x0000603b2000
+	191 - CNode: 'cnode_uart_driver_root' @ 0x0000603b2800
+	192 - SchedContext: 'sched_context_app_manager' @ 0x0000603b3000
+	193 - SchedContext: 'sched_context_block_driver' @ 0x0000603b3100
+	194 - SchedContext: 'sched_context_calculator' @ 0x0000603b3200
+	195 - SchedContext: 'sched_context_console_service' @ 0x0000603b3300
+	196 - SchedContext: 'sched_context_counter' @ 0x0000603b3400
+	197 - SchedContext: 'sched_context_filesystem' @ 0x0000603b3500
+	198 - SchedContext: 'sched_context_monitor' @ 0x0000603b3600
+	199 - SchedContext: 'sched_context_native_runner' @ 0x0000603b3700
+	200 - SchedContext: 'sched_context_script_vm' @ 0x0000603b3800
+	201 - SchedContext: 'sched_context_terminal' @ 0x0000603b3900
+	202 - SchedContext: 'sched_context_uart_driver' @ 0x0000603b3a00
+	203 - Notification: 'ntfn_app_manager' @ 0x0000603b3b00
+	204 - Notification: 'ntfn_block_driver' @ 0x0000603b3b40
+	205 - Notification: 'ntfn_calculator' @ 0x0000603b3b80
+	206 - Notification: 'ntfn_console_service' @ 0x0000603b3bc0
+	207 - Notification: 'ntfn_counter' @ 0x0000603b3c00
+	208 - Notification: 'ntfn_filesystem' @ 0x0000603b3c40
+	209 - Notification: 'ntfn_native_runner' @ 0x0000603b3c80
+	210 - Notification: 'ntfn_script_vm' @ 0x0000603b3cc0
+	211 - Notification: 'ntfn_terminal' @ 0x0000603b3d00
+	212 - Notification: 'ntfn_uart_driver' @ 0x0000603b3d40
+	213 - Reply: 'reply_app_manager' @ 0x0000603b3d80
+	214 - Reply: 'reply_block_driver' @ 0x0000603b3da0
+	215 - Reply: 'reply_calculator' @ 0x0000603b3dc0
+	216 - Reply: 'reply_console_service' @ 0x0000603b3de0
+	217 - Reply: 'reply_counter' @ 0x0000603b3e00
+	218 - Reply: 'reply_filesystem' @ 0x0000603b3e20
+	219 - Reply: 'reply_monitor' @ 0x0000603b3e40
+	220 - Reply: 'reply_native_runner' @ 0x0000603b3e60
+	221 - Reply: 'reply_script_vm' @ 0x0000603b3e80
+	222 - Reply: 'reply_terminal' @ 0x0000603b3ea0
+	223 - Reply: 'reply_uart_driver' @ 0x0000603b3ec0
+	224 - Endpoint: 'ep_fault_monitor' @ 0x0000603b3ee0

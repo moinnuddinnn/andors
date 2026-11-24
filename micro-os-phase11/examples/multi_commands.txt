@@ -1,0 +1,11 @@
+Validated C-compiled two-service AArch64 ELF (60 byte .text).
+ELF: 184 bytes; Base64: 248 characters, fits MicroFS.
+Paste this entire command INTO Micro-OS:
+write /apps/multi.elf f0VMRgIBAQAAAAAAAAAAAAMAtwABAAAAfAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAOAABAAAAAAAAAAEAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuAAAAAAAAAC4AAAAAAAAABAAAAAAAAAAAAAAAP17vqn0TwGp9AMAKvMDAaogAIBS4QMUKv0DAJFgAj/WQACAUuEDFCpgAj/W4AMUKvRPQan9e8KowANf1g==
+Run:
+elfrun /apps/multi.elf 42
+Expected console output (order relative to shell text may vary):
+[CONSOLE] decimal: 42
+[CONSOLE] hexadecimal: 0x0000002A
+native C returned 42 (two AArch64 ABI calls)
+Then use sync to persist the file.
